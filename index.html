@@ -181,7 +181,7 @@ a:hover{color:inherit}
 .tier ul{display:flex;flex-direction:column;gap:4px}
 .tier li{display:flex;gap:8px;font-size:16px;line-height:1.6}
 .tier li::before,.hl li::before,.years ul li::before{content:"";flex:none;width:7px;height:7px;margin-top:.6em;border-radius:50%;background:var(--g)}
-.site .tg{display:inline-flex;align-items:center;min-height:44px;font-size:15px;font-weight:700;color:var(--bl);border-bottom:1px dashed currentColor}
+.site .tg{display:inline-flex;align-items:center;min-height:44px;font-size:15px;font-weight:700;color:var(--bl);border:0;text-decoration:none;box-shadow:none}
 .tier-more{font-size:16px;line-height:1.85;padding:4px 0 18px}
 .js .tier-more:not(.is-open){display:none}
 .note-a{font-size:17px;font-weight:700;line-height:1.75}
@@ -395,7 +395,7 @@ a:hover{color:inherit}
 .flow h3{font-weight:600}
 .tier h3{font-weight:600;font-size:19px;line-height:1.65}
 .tier li{line-height:1.8}
-.tier .tg{margin-top:6px;gap:12px;border-bottom:1px solid rgba(31,71,136,.45);font-weight:500}
+.tier .tg{margin-top:6px;gap:12px;border:0;font-weight:500}
 .tier .tg::after{content:"＋";font-size:20px;line-height:1}
 .js .tier-more,.js .career{display:none!important}
 .who .role{font-weight:500;letter-spacing:.06em}
@@ -529,6 +529,65 @@ a:hover{color:inherit}
  .prof .who .nm{font-size:24px}
 }
 
+
+/* Separate content with space rather than stacked decorative rules. */
+.site .tier,.site .tier.t-a{border-top:0}
+.site .tier .tg{border-bottom:0;margin-top:auto;padding-top:12px}
+.site .strong li,.site .strong li:first-child{border-top:0}
+.site .hl,.site .say-b{border-top:0}
+.mean span{display:block}
+@media(max-width:899px){
+ .site{--mobile-gutter:clamp(20px,5vw,28px)}
+ .site:not(.mode-paged) .hd{box-shadow:none}
+ .txt{padding:calc(96px + var(--st)) max(var(--mobile-gutter),var(--sr)) calc(var(--slant) + 32px) max(var(--mobile-gutter),var(--sl));gap:20px}
+ .site:not(.mode-paged) .scene{min-height:0}
+ .site:not(.mode-paged) .side{padding:calc(var(--slant) + 40px) max(var(--mobile-gutter),var(--sr)) calc(56px + var(--sb)) max(var(--mobile-gutter),var(--sl));gap:24px}
+
+ .s0 .lead{margin-top:2px;line-height:1.95}
+ .s0 .btns{gap:12px;margin-top:4px}
+ .mean{max-width:100%;font-size:14px;line-height:1.8}
+ .mean span+span{margin-top:4px}
+ .tiers{gap:44px}
+ .site .tier,.site .tier.t-a{padding:0;gap:16px}
+ .site .tier .tg{margin-top:4px;padding-top:4px;min-height:44px;gap:12px}
+ .tier ul{gap:10px}
+ .tier li{line-height:1.85}
+ .tier h3{line-height:1.65}
+ .strong{gap:36px}
+ .site .strong li,.site .strong li:first-child{padding:0}
+ .strong p{margin-top:14px;line-height:1.9}
+ .flow{gap:24px}
+ .say{gap:24px}
+ .site .say-b{padding-top:0}
+ .prof .hl{padding-top:0}
+ .company-block .co>div{padding:14px 0}
+ .cf{gap:20px}
+ .f{gap:8px}
+}
+
+
+/* Shared section rhythm. Shape clearance is separate from content spacing. */
+.site{--section-space:56px;--pane-space:40px;--content-gap:24px}
+.site .tg{border:0;text-decoration:none;box-shadow:none}
+.site .tg::before{content:none}
+.site .tg:hover{opacity:.75}
+.site .tg:focus-visible{outline:3px solid #F2B705;outline-offset:4px}
+@media(max-width:899px){
+ .site .scene .txt{padding:calc(var(--section-space) + var(--st)) max(var(--mobile-gutter),var(--sr)) calc(var(--slant) + var(--pane-space)) max(var(--mobile-gutter),var(--sl));gap:var(--content-gap)}
+ .site .s0 .txt{padding-top:calc(96px + var(--st))}
+ .site .scene .side,.site:not(.mode-paged) .scene .side{padding:calc(var(--slant) + var(--pane-space)) max(var(--mobile-gutter),var(--sr)) calc(var(--section-space) + var(--sb)) max(var(--mobile-gutter),var(--sl));gap:var(--content-gap)}
+ .site .scene{scroll-margin-top:calc(64px + var(--st))}
+ .site .tiers,.site .strong{gap:40px}
+ .site .say,.site .prof,.site .flow{row-gap:var(--content-gap)}
+ .site .tier,.site .tier.t-a{row-gap:16px}
+ .site .tier .tg{margin-top:8px;padding:0;border:0}
+}
+@media(min-width:900px){
+ .site{--section-top:max(112px,14vh);--section-bottom:max(40px,6vh)}
+ .site .scene .txt{padding:var(--section-top) calc(var(--slant) + 24px) var(--section-bottom) var(--page-gutter);gap:var(--content-gap)}
+ .site .scene .side,.site.mode-paged .scene .side{padding:var(--section-top) calc(var(--page-gutter) + 44px) var(--section-bottom) calc(var(--pw) + 24px);gap:var(--content-gap)}
+}
+
 </style>
 </head>
 <body>
@@ -575,7 +634,7 @@ a:hover{color:inherit}
 <section class="scene s0 is-cur" id="top" data-name="トップ" aria-labelledby="t0">
   <div class="side">
     <div class="kv"><svg viewBox="0 30 144 144" aria-hidden="true" focusable="false"><path class="la" d="M0 30H90V48H18V156H126V70H144V174H0Z"></path><path class="lb" d="M100 0H164V60H146V18H100Z"></path></svg><p class="brand-statement" lang="en">Your Needs,<br>Our Thinking,<br>from KOBE</p></div>
-    <p class="mean"><span>あなたの課題に</span><span>私たちの考える力を。</span><span>神戸から。</span></p>
+    <p class="mean"><span>あなたの課題に私たちの考える力を。</span><span>神戸から。</span></p>
     <button class="hint" type="button" data-step="1" aria-label="次の場面へ"><span class="en" aria-hidden="true">SCROLL</span><span class="ln2" aria-hidden="true"></span></button>
   </div>
   <div class="panel"><div class="txt">
@@ -852,7 +911,11 @@ a:hover{color:inherit}
         applyInert();
       }
     }
-    function topOf(i) { var y = 0; for (var k = 0; k < i; k++) y += scenes[k].offsetHeight; return y; }
+    function topOf(i) {
+      var header = root.querySelector('.hd');
+      var inset = header ? header.offsetHeight : 0;
+      return Math.max(0, scenes[i].getBoundingClientRect().top + (win.scrollY || 0) - inset);
+    }
     function go(i, o) {
       o = o || {};
       i = Math.max(0, Math.min(n - 1, i));
