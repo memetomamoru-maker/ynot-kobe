@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ynot-kobe.vercel.app/sitemap.xml

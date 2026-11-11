@@ -1,0 +1,11 @@
+Photo credits
+
+kobe-harbor.jpg
+Title: 20190901 Kobe harbor-1.jpg
+Photographer: Balon Greyjoy
+Source: https://commons.wikimedia.org/wiki/File:20190901_Kobe_harbor-1.jpg
+Original: https://upload.wikimedia.org/wikipedia/commons/4/43/20190901_Kobe_harbor-1.jpg
+License: CC0 1.0 Universal
+License URL: https://creativecommons.org/publicdomain/zero/1.0/
+Source and license verified: 2026-11-11
+Changes: reduced to 1200 x 800 pixels, JPEG compression.
