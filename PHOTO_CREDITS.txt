@@ -1,11 +1,12 @@
 Photo credits
 
-kobe-harbor.jpg
-Title: 20190901 Kobe harbor-1.jpg
-Photographer: Balon Greyjoy
-Source: https://commons.wikimedia.org/wiki/File:20190901_Kobe_harbor-1.jpg
-Original: https://upload.wikimedia.org/wikipedia/commons/4/43/20190901_Kobe_harbor-1.jpg
-License: CC0 1.0 Universal
-License URL: https://creativecommons.org/publicdomain/zero/1.0/
-Source and license verified: 2026-11-11
-Changes: reduced to 1200 x 800 pixels, JPEG compression.
+kobe-harbor-daylight.jpg
+Photographer: Guohua Song
+Title: Kobe Port Tower and Maritime Museum Skyline View
+Source: https://www.pexels.com/photo/kobe-port-tower-and-maritime-museum-skyline-view-33632409/
+License: Pexels License
+License URL: https://www.pexels.com/license/
+The license permits free website use and does not require attribution.
+Not CC0: this replacement is governed by the Pexels License.
+License checked: 2026-11-11
+Downloaded website-size JPEG. No color or content modifications.
