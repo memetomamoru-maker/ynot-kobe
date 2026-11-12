@@ -275,7 +275,7 @@ a:hover{color:inherit}
 .dragging .panel,.dragging .side{will-change:transform}
 .mode-paged .scene.is-cur{pointer-events:auto}
 .mode-paged .side{padding-bottom:calc(64px + var(--sb))}
-.mode-paged.cur-0,.mode-paged.cur-1,.mode-paged.cur-3,.mode-paged.cur-4,.mode-paged.cur-6{--la:#fff;--lb:#B9DFA0;--ui:#fff}
+.mode-paged.cur-0,.mode-paged.cur-1,.mode-paged.cur-3,.mode-paged.cur-4,.mode-paged.cur-7{--la:#fff;--lb:#B9DFA0;--ui:#fff}
 
 @keyframes in-up{from{transform:translateY(var(--vh))}to{transform:none}}
 @keyframes out-up{from{transform:none}to{transform:translateY(calc(var(--vh) * -1))}}
@@ -481,8 +481,8 @@ a:hover{color:inherit}
  .s5 .side{padding-top:var(--contact-top);padding-bottom:44px;padding-left:calc(var(--pw) + 24px);overflow-y:auto;justify-content:flex-start;touch-action:pan-y pinch-zoom;overscroll-behavior:contain}
  .s5 .cf{max-width:700px}
  .s5 .company-block .co>div{font-size:15px}
- .mode-paged.cur-6 .stage{touch-action:auto}
- .mode-paged.cur-6 .panel{touch-action:pan-x pinch-zoom}
+ .mode-paged.cur-7 .stage{touch-action:auto}
+ .mode-paged.cur-7 .panel{touch-action:pan-x pinch-zoom}
  .company-block .co>div{grid-template-columns:76px minmax(0,1fr)}
 }
 @media(min-width:900px) and (max-width:1199px){
@@ -632,10 +632,11 @@ a:hover{color:inherit}
 @media(max-width:599px){.founding-prose{margin-top:24px}.founding-prose p{line-height:1.95}}
 
 
-/* Plain, parallel pricing items: space replaces decorative bullets. */
-.site .tier li{display:block;line-height:1.85}
-.site .tier li::before{content:none;display:none}
-.site .tier ul{gap:12px}
+/* Pricing lists: quiet green markers and hanging indents keep each item distinct. */
+.site .tier ul{width:100%;gap:10px}
+.price-phrase{display:inline-block;max-width:100%}
+.site .tier li{position:relative;display:block;padding-left:16px;line-height:1.8;letter-spacing:.02em}
+.site .tier li::before{content:"";display:block;position:absolute;left:1px;top:.78em;width:5px;height:5px;border-radius:50%;background:var(--dg)}
 .brand-statement .mv-line{display:block}
 @keyframes mv-frame{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 @keyframes mv-mobile-corner{from{opacity:0;transform:translate(20px,-12px)}to{opacity:1;transform:translate(-20px,30px)}}
@@ -724,6 +725,67 @@ a:hover{color:inherit}
  .mvv-board .mvv-values{padding:28px 36px 36px}
 }
 
+
+/* FAQ: a readable answer area stays within the desktop scene. */
+.site .scene.s7{--pc:#F3F9EA;--pt:#242923;--sc:#F3F9EA;--st-c:#242923;--pw:100%;--slant:0px;background:var(--pg);grid-template-columns:minmax(0,1fr);grid-template-rows:auto}
+.site.mode-paged .scene.s7{grid-template-rows:minmax(0,1fr)}
+.site .scene.s7 .side{display:none}
+.site .scene.s7 .panel{grid-column:1 / -1;width:100%;clip-path:none}
+.site .scene.s7 .txt.faq-board{display:grid;grid-template-columns:minmax(220px,.7fr) minmax(0,1.6fr);align-items:start;gap:clamp(32px,4vw,64px);padding-right:calc(var(--page-gutter,24px) + 44px);height:100%;min-height:0}
+.faq-intro{align-self:start;padding-top:16px}
+.site .faq-eyebrow{font-size:16px;letter-spacing:.12em;font-weight:700;color:var(--dg);margin-bottom:16px}
+.site .faq-intro h2{font-size:clamp(28px,2.7vw,40px);line-height:1.5;color:var(--bl)}
+.site .faq-intro>p:last-of-type{font-size:15px;line-height:1.9;max-width:22em;margin-top:20px}
+.site .faq-intro .btn{margin-top:24px;background:var(--bl);color:#fff;font-size:14px;padding:10px 20px}
+.faq-scroll{min-width:0;max-height:100%;overflow-y:auto;overscroll-behavior:contain;scrollbar-gutter:stable;scroll-padding-block:16px;touch-action:pan-y pinch-zoom;padding:0 10px 4px 0}
+.faq-list{display:flex;flex-direction:column;gap:12px}
+.faq-item{background:var(--ow);border:1px solid rgba(31,71,136,.14);border-radius:12px;overflow:clip}
+.site .faq-item summary{display:grid;grid-template-columns:24px minmax(0,1fr) 24px;align-items:start;gap:12px;padding:22px 24px;list-style:none;cursor:pointer;font-size:17px;font-weight:600;line-height:1.7;color:var(--bl);letter-spacing:.01em}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-q{font-family:Arial,sans-serif;color:var(--dg);font-weight:700;padding-top:1px}
+.faq-item summary::after{content:"＋";grid-column:3;font-weight:400;text-align:center}
+.faq-item[open] summary::after{content:"−"}
+.faq-item summary:hover{background:rgba(85,160,74,.05)}
+.faq-answer{padding:0 24px 24px 60px;font-size:15px;line-height:1.95;letter-spacing:.02em;line-break:strict}
+.site .faq-answer p+p{margin-top:14px}
+.faq-compare{width:100%;border-collapse:collapse;table-layout:fixed;margin-top:20px;font-size:15px;line-height:1.8}
+.faq-compare caption{text-align:left;font-weight:600;margin-bottom:10px;color:var(--bl)}
+.faq-compare th,.faq-compare td{padding:12px;text-align:left;vertical-align:top;border-bottom:1px solid #DBE5D4;overflow-wrap:anywhere}
+.faq-compare thead th{background:#38803F;color:#fff;font-weight:600}
+.faq-compare thead th:first-child{width:132px}
+.faq-compare tbody th{color:var(--bl);font-weight:600;background:#F0F5EB}
+.faq-compare td:last-child{background:#F5F9F0}
+.site .faq-answer .faq-compare+p{margin-top:18px;font-size:14px}
+.site .faq-scroll-footer{font-size:14px;line-height:1.8;padding:20px 6px 4px}
+.site .faq-scroll-footer a{display:inline-flex;align-items:center;min-height:44px;color:var(--bl);font-weight:600;text-decoration:underline;text-underline-offset:4px}
+.site.mode-paged.cur-6{--la:#1F4788;--lb:#55A04A;--ui:#242923;--nav:#242923;--cta-bg:#1F4788;--cta-fg:#fff}
+.site.mode-paged.cur-6 .stage{touch-action:auto}
+@media(max-width:1199px) and (min-width:900px){
+ .site .scene.s7 .txt.faq-board{grid-template-columns:minmax(200px,.65fr) minmax(0,1.6fr);gap:28px}
+ .site .faq-item summary{font-size:16px;padding:18px;gap:8px}
+ .faq-answer{padding:0 18px 22px 50px}
+}
+@media(max-width:899px){
+ .site .scene.s7 .txt.faq-board{display:flex;height:auto;gap:28px;padding:calc(var(--section-space) + var(--st)) max(var(--mobile-gutter),var(--sr)) calc(var(--section-space) + var(--sb)) max(var(--mobile-gutter),var(--sl))}
+ .faq-intro{padding-top:0;width:100%}
+ .site .faq-intro h2{font-size:30px}
+ .site .faq-intro>p:last-of-type{max-width:none;margin-top:14px}
+ .site .faq-intro .btn{display:none}
+ .faq-scroll{width:100%;max-height:none;overflow:visible;padding:0;scrollbar-gutter:auto}
+ .site .faq-item summary{font-size:16px;padding:18px 16px;grid-template-columns:18px minmax(0,1fr) 20px;gap:8px}
+ .faq-answer{padding:0 18px 22px;font-size:15px}
+ .faq-compare{font-size:14px;display:block;margin-top:18px}
+ .faq-compare caption{display:block}
+ .faq-compare thead{position:absolute;width:1px;height:1px;clip-path:inset(50%);overflow:hidden}
+ .faq-compare tbody{display:block}
+ .faq-compare tr{display:grid;grid-template-columns:minmax(0,1fr);border:1px solid #DBE5D4;border-radius:8px;overflow:hidden;margin-top:12px}
+ .faq-compare tbody th{border:0;padding:10px 12px}
+ .faq-compare td{display:block;padding:12px;border:0}
+ .faq-compare td::before{content:attr(data-label);display:block;font-size:12px;font-weight:600;color:#596556;margin-bottom:4px}
+ .faq-compare td:last-child::before{color:var(--bl)}
+ .site .faq-scroll-footer{padding:18px 0 0}
+}
+
 </style>
 <script type="application/ld+json">
 {
@@ -744,34 +806,37 @@ a:hover{color:inherit}
 <header class="hd">
   <a class="logo" href="#top" data-go="0" data-focus="1" aria-label="YNOT ! KOBE トップへ"><svg viewBox="28 28 882 174" aria-hidden="true" focusable="false"><g transform="translate(28 28)"><path class="la" d="M0 30H90V48H18V156H126V70H144V174H0Z"></path><path class="lb" d="M100 0H164V60H146V18H100Z"></path></g><g transform="translate(226 98)"><path class="la" fill-rule="evenodd" transform="translate(0 0)" d="M0 0H23L38 18 53 0H76L47 36V60H29V36Z"></path><path class="la" fill-rule="evenodd" transform="translate(84 0)" d="M0 60V0H18L52 33V0H70V60H52L18 27V60Z"></path><path class="la" fill-rule="evenodd" transform="translate(162 0)" d="M20 0H56Q76 0 76 20V40Q76 60 56 60H20Q0 60 0 40V20Q0 0 20 0ZM25 16Q18 16 18 23V37Q18 44 25 44H51Q58 44 58 37V23Q58 16 51 16Z"></path><path class="la" fill-rule="evenodd" transform="translate(246 0)" d="M0 0H70V16H45V60H25V16H0Z"></path><path class="lb" fill-rule="evenodd" transform="translate(336 0)" d="M0 0H18V36H0ZM0 44H18V60H0Z"></path><path class="la" fill-rule="evenodd" transform="translate(374 0)" d="M0 0H18V23L45 0H71L37 29 73 60H46L18 36V60H0Z"></path><path class="la" fill-rule="evenodd" transform="translate(454 0)" d="M20 0H56Q76 0 76 20V40Q76 60 56 60H20Q0 60 0 40V20Q0 0 20 0ZM25 16Q18 16 18 23V37Q18 44 25 44H51Q58 44 58 37V23Q58 16 51 16Z"></path><path class="la" fill-rule="evenodd" transform="translate(538 0)" d="M0 0H50Q71 0 71 16Q71 25 63 29Q73 33 73 44Q73 60 51 60H0ZM18 14V23H47Q53 23 53 18.5Q53 14 47 14ZM18 37V46H48Q55 46 55 41.5Q55 37 48 37Z"></path><path class="la" fill-rule="evenodd" transform="translate(618 0)" d="M0 0H66V15H18V23H60V37H18V45H66V60H0Z"></path></g></svg></a>
   <nav class="gnav" aria-label="メインメニュー">
-    <a class="lk" href="#advisor" data-go="1" data-on="1" data-focus="1">Web顧問</a>
+      <a class="lk" href="#advisor" data-go="1" data-on="1" data-focus="1">Web顧問</a>
     <a class="lk" href="#strengths" data-go="2" data-on="2" data-focus="1">進め方と強み</a>
     <a class="lk" href="#pricing" data-go="3" data-on="3" data-focus="1">料金</a>
     <a class="lk" href="#principles" data-go="4" data-on="4" data-focus="1">私たちについて</a>
-    <a class="cta" href="#contact" data-go="6" data-focus="1">相談する</a>
-  </nav>
+    <a class="lk" href="#faq" data-go="6" data-on="6" data-focus="1">よくあるご質問</a>
+    <a class="cta" href="#contact" data-go="7" data-focus="1">相談する</a>
+</nav>
   <button class="menu-btn" type="button" data-menu="toggle" aria-expanded="false" aria-controls="mnav" aria-label="メニュー"><span class="ico" aria-hidden="true"><span></span><span></span><span></span></span><span class="o" aria-hidden="true">メニュー</span><span class="x" aria-hidden="true">閉じる</span></button>
 </header>
 
 <nav class="mnav" id="mnav" aria-label="メニュー">
-  <a class="mi" href="#top" data-go="0" data-on="0" data-focus="1"><span>トップ</span><span class="en" aria-hidden="true">1 / 7</span></a>
-  <a class="mi" href="#advisor" data-go="1" data-on="1" data-focus="1"><span>Web顧問という選択</span><span class="en" aria-hidden="true">2 / 7</span></a>
-  <a class="mi" href="#strengths" data-go="2" data-on="2" data-focus="1"><span>進め方と強み</span><span class="en" aria-hidden="true">3 / 7</span></a>
-  <a class="mi" href="#pricing" data-go="3" data-on="3" data-focus="1"><span>料金の目安</span><span class="en" aria-hidden="true">4 / 7</span></a>
-  <a class="mi" href="#principles" data-go="4" data-on="4" data-focus="1"><span>私たちの考え方</span><span class="en" aria-hidden="true">5 / 7</span></a>
-  <a class="mi" href="#about" data-go="5" data-on="5" data-focus="1"><span>代表について</span><span class="en" aria-hidden="true">6 / 7</span></a>
-  <a class="mi" href="#contact" data-go="6" data-on="6" data-focus="1"><span>お問い合わせ・会社概要</span><span class="en" aria-hidden="true">7 / 7</span></a>
+  <a class="mi" href="#top" data-go="0" data-on="0" data-focus="1"><span>トップ</span><span class="en" aria-hidden="true">1 / 8</span></a>
+  <a class="mi" href="#advisor" data-go="1" data-on="1" data-focus="1"><span>Web顧問という選択</span><span class="en" aria-hidden="true">2 / 8</span></a>
+  <a class="mi" href="#strengths" data-go="2" data-on="2" data-focus="1"><span>進め方と強み</span><span class="en" aria-hidden="true">3 / 8</span></a>
+  <a class="mi" href="#pricing" data-go="3" data-on="3" data-focus="1"><span>料金の目安</span><span class="en" aria-hidden="true">4 / 8</span></a>
+  <a class="mi" href="#principles" data-go="4" data-on="4" data-focus="1"><span>私たちの考え方</span><span class="en" aria-hidden="true">5 / 8</span></a>
+  <a class="mi" href="#about" data-go="5" data-on="5" data-focus="1"><span>代表について</span><span class="en" aria-hidden="true">6 / 8</span></a>
+  <a class="mi" href="#faq" data-go="6" data-on="6" data-focus="1"><span>よくあるご質問</span><span class="en" aria-hidden="true">7 / 8</span></a>
+  <a class="mi" href="#contact" data-go="7" data-on="7" data-focus="1"><span>お問い合わせ・会社概要</span><span class="en" aria-hidden="true">8 / 8</span></a>
 </nav>
 
-<nav class="dots" aria-label="場面の切り替え（全7場面）">
+<nav class="dots" aria-label="場面の切り替え（全8場面）">
   <button class="ar" type="button" data-step="-1" aria-label="前の場面へ"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 10 L8 5 L13 10" fill="none" stroke="#242923" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
-  <a class="d" href="#top" data-go="0" data-on="0" aria-label="1 / 7 トップ"><span></span></a>
-  <a class="d" href="#advisor" data-go="1" data-on="1" aria-label="2 / 7 Web顧問という選択"><span></span></a>
-  <a class="d" href="#strengths" data-go="2" data-on="2" aria-label="3 / 7 進め方と強み"><span></span></a>
-  <a class="d" href="#pricing" data-go="3" data-on="3" aria-label="4 / 7 料金の目安"><span></span></a>
-  <a class="d" href="#principles" data-go="4" data-on="4" aria-label="5 / 7 私たちの考え方"><span></span></a>
-  <a class="d" href="#about" data-go="5" data-on="5" aria-label="6 / 7 代表について"><span></span></a>
-  <a class="d" href="#contact" data-go="6" data-on="6" aria-label="7 / 7 お問い合わせ・会社概要"><span></span></a>
+  <a class="d" href="#top" data-go="0" data-on="0" aria-label="1 / 8 トップ"><span></span></a>
+  <a class="d" href="#advisor" data-go="1" data-on="1" aria-label="2 / 8 Web顧問という選択"><span></span></a>
+  <a class="d" href="#strengths" data-go="2" data-on="2" aria-label="3 / 8 進め方と強み"><span></span></a>
+  <a class="d" href="#pricing" data-go="3" data-on="3" aria-label="4 / 8 料金の目安"><span></span></a>
+  <a class="d" href="#principles" data-go="4" data-on="4" aria-label="5 / 8 私たちの考え方"><span></span></a>
+  <a class="d" href="#about" data-go="5" data-on="5" aria-label="6 / 8 代表について"><span></span></a>
+  <a class="d" href="#faq" data-go="6" data-on="6" aria-label="7 / 8 よくあるご質問"><span></span></a>
+  <a class="d" href="#contact" data-go="7" data-on="7" aria-label="8 / 8 お問い合わせ・会社概要"><span></span></a>
   <button class="ar" type="button" data-step="1" aria-label="次の場面へ"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6 L8 11 L13 6" fill="none" stroke="#242923" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
 </nav>
 <p class="live" aria-live="polite"></p>
@@ -789,7 +854,7 @@ a:hover{color:inherit}
     <h1 id="t0" class="h-top" tabindex="-1"><span class="ln">伝わりにくいものを</span><br><span class="ln">伝わるかたちにする。</span></h1>
     <p class="lead">あなたの事業でWebを活用し、新しい価値を生み出しませんか。まだ具体的に決まっていなくても、ゼロから一緒に考えます。</p>
     <div class="btns">
-      <a class="btn btn-solid" href="#contact" data-go="6">相談する</a>
+      <a class="btn btn-solid" href="#contact" data-go="7">相談する</a>
       <a class="btn btn-line" href="#advisor" data-go="1">Web顧問について</a>
     </div>
   </div></div>
@@ -835,10 +900,10 @@ a:hover{color:inherit}
     <div class="tiers">
       <div class="tier t-a">
         <p class="amt"><span class="u">月額</span><span class="n en">15</span><span class="u">万円の例</span></p>
-        <h3>いまあるサイトを整える。</h3>
+        <h3><span class="price-phrase">いまあるサイトを</span><span class="price-phrase">整える。</span></h3>
         <ul>
-          <li>課題の整理と優先順位づけ</li>
-          <li>既存ページ・紹介文の修正</li>
+          <li><span class="price-phrase">課題の整理と</span><span class="price-phrase">優先順位づけ</span></li>
+          <li><span class="price-phrase">既存ページ・</span><span class="price-phrase">紹介文の修正</span></li>
           <li>更新や情報発信の相談</li>
         </ul>
         <button class="tg" type="button" data-tier="0" aria-expanded="false" aria-controls="detail-dialog" aria-haspopup="dialog" data-detail-source="tier-more-0"><span class="tg-o">支援内容の例を見る</span><span class="tg-x">閉じる</span></button>
@@ -846,7 +911,7 @@ a:hover{color:inherit}
       <div class="tier-more" id="tier-more-0"><div class="detail-price">月額 15万円<span>税別・支援例</span></div><p class="detail-lead">いまあるサイトを整える。</p><section><h3>このような場合に</h3><p>既存サイトの内容や問い合わせまでの流れを見直したい企業に向けた支援例です。課題の整理と小さな修正を中心に進めます。</p></section><section><h3>相談できることの例</h3><ul><li>いまのサイトで改善すべき点を知りたい</li><li>会社やサービスの紹介文を整えたい</li><li>既存ページの内容や問い合わせまでの流れを修正したい</li></ul></section><section><h3>一緒に進めること</h3><p>優先して取り組む課題を決め、既存ページの修正や文章の編集を進めます。新しい制作が必要な場合は内容と進め方をご相談します。</p></section><p class="detail-fine">契約範囲内の制作費も顧問料に含まれます。支援の内容や制作量はご予算と目標に合わせて事前に決めます。<br>施策の効果を確かめながら改善を続けるため、初回は3か月からのご契約をお願いしています。1か月のみのご契約は承っていません。</p></div>
       <div class="tier t-b">
         <p class="amt"><span class="u">月額</span><span class="n en">30</span><span class="u">万円の例</span></p>
-        <h3>必要なページを新しくつくる。</h3>
+        <h3><span class="price-phrase">必要なページを</span><span class="price-phrase">新しくつくる。</span></h3>
         <ul>
           <li>サイト・LPの新規制作</li>
           <li>紹介文などの情報発信</li>
@@ -857,10 +922,10 @@ a:hover{color:inherit}
       <div class="tier-more" id="tier-more-1"><div class="detail-price">月額 30万円<span>税別・支援例</span></div><p class="detail-lead">必要なページを新しくつくる。</p><section><h3>このような場合に</h3><p>新しいサービスページやLPなどをつくりたい企業に向けた支援例です。企画から制作、公開後の改善まで継続して進めます。</p></section><section><h3>相談できることの例</h3><ul><li>自社の強みが伝わるサイトやサービスページをつくりたい</li><li>新しい取り組みを紹介するLPを用意したい</li><li>公開したページの反応を見ながら改善したい</li></ul></section><section><h3>一緒に進めること</h3><p>何を誰に伝えるかを整理し、サイトやLP、紹介文を企画・制作します。公開後は反応を確かめながら改善します。</p></section><p class="detail-fine">契約範囲内の制作費も顧問料に含まれます。支援の内容や制作量はご予算と目標に合わせて事前に決めます。<br>施策の効果を確かめながら改善を続けるため、初回は3か月からのご契約をお願いしています。1か月のみのご契約は承っていません。</p></div>
       <div class="tier t-c">
         <p class="amt"><span class="u">月額</span><span class="n en">50</span><span class="u">万円〜の例</span></p>
-        <h3>複数の施策をまとめて進める。</h3>
+        <h3><span class="price-phrase">複数の施策を</span><span class="price-phrase">まとめて進める。</span></h3>
         <ul>
           <li>事業を踏まえたWeb戦略</li>
-          <li>制作・集客施策の計画と推進</li>
+          <li><span class="price-phrase">制作・集客施策の</span><span class="price-phrase">計画と推進</span></li>
           <li>マーケティング・AI活用</li>
         </ul>
         <button class="tg" type="button" data-tier="2" aria-expanded="false" aria-controls="detail-dialog" aria-haspopup="dialog" data-detail-source="tier-more-2"><span class="tg-o">支援内容の例を見る</span><span class="tg-x">閉じる</span></button>
@@ -887,7 +952,7 @@ a:hover{color:inherit}
       </div>
       <div class="mvv-vision">
         <p class="mvv-label"><span class="en" lang="en">VISION</span><span>目指す未来</span></p>
-        <h3><span>企業が自分たちの強みを生かし、</span><span>次の一歩を踏み出せる社会に。</span></h3>
+        <h3>企業の強みにデジタルの知見が加わり、新しい価値が生まれる社会に。</h3>
         <p class="mvv-description">YNOTの由来は「Why not?」。やってみようという姿勢で、企業の挑戦を一緒に形にします。</p>
       </div>
     </div>
@@ -969,6 +1034,58 @@ a:hover{color:inherit}
 </section>
 
 <!-- 6 お問い合わせ・会社概要 -->
+
+<!-- FAQ -->
+<section class="scene s7" id="faq" data-name="よくあるご質問" aria-labelledby="t-faq">
+ <div class="side" aria-hidden="true"></div>
+ <div class="panel"><div class="txt faq-board">
+  <div class="faq-intro">
+   <p class="faq-eyebrow en" lang="en">FAQ</p>
+   <h2 id="t-faq" tabindex="-1">よくあるご質問</h2>
+   <p>ご依頼前の疑問にお答えします。</p>
+   <a class="btn" href="#contact" data-go="7">相談する</a>
+  </div>
+  <div class="faq-scroll" data-nopage="1" role="region" aria-label="よくあるご質問と回答" tabindex="0">
+   <div class="faq-list">
+    <details class="faq-item" name="faq-answers">
+     <summary><span class="faq-q" aria-hidden="true">Q</span><span>Web担当者の採用とWeb顧問への依頼はどう違いますか？</span></summary>
+     <div class="faq-answer">
+      <p>Web担当者を採用せずに、必要なWeb業務を月額で依頼できます。代表がWebの相談から制作・改善まで継続して担当します。</p>
+      <table class="faq-compare">
+       <caption>採用とWeb顧問の比較</caption>
+       <thead><tr><th scope="col">比較項目</th><th scope="col">Web担当者を採用</th><th scope="col">YNOT ! KOBEのWeb顧問</th></tr></thead>
+       <tbody>
+        <tr><th scope="row">費用</th><td data-label="Web担当者を採用">給与のほかに採用活動や備品などの費用がかかります。</td><td data-label="YNOT ! KOBEのWeb顧問">月額15万円・30万円・50万円〜（税別）が目安です。契約範囲内の制作費も含みます。</td></tr>
+        <tr><th scope="row">開始までの流れ</th><td data-label="Web担当者を採用">採用活動を行い、入社時期や業務の引き継ぎを調整します。</td><td data-label="YNOT ! KOBEのWeb顧問">依頼内容を伺い、支援の範囲と開始時期を相談して決めます。</td></tr>
+        <tr><th scope="row">任せられること</th><td data-label="Web担当者を採用">採用する人の専門分野や経験により異なります。</td><td data-label="YNOT ! KOBEのWeb顧問">代表が課題の整理から企画・制作・公開後の改善まで一貫して担当します。</td></tr>
+        <tr><th scope="row">事業への理解</th><td data-label="Web担当者を採用">日々の業務を通じて事業への理解を深めます。</td><td data-label="YNOT ! KOBEのWeb顧問">打ち合わせを通じて事業を理解し、Webの知識や経験を生かして提案します。</td></tr>
+       </tbody>
+      </table>
+      <p>すでに社内にWeb担当者がいる場合も、役割を分担しながら支援できます。</p>
+     </div>
+    </details>
+    <details class="faq-item" name="faq-answers">
+     <summary><span class="faq-q" aria-hidden="true">Q</span><span>Web顧問にはどこまで依頼できますか？</span></summary>
+     <div class="faq-answer"><p>Web活用の相談から、サイトやLPの制作・文章の執筆・公開後の改善まで対応します。</p><p>代表が相談から制作まで一貫して担当します。具体的に取り組む内容は事業の課題やご予算に合わせて決めます。</p></div>
+    </details>
+    <details class="faq-item" name="faq-answers">
+     <summary><span class="faq-q" aria-hidden="true">Q</span><span>まだ何も決まっていなくても相談できますか？</span></summary>
+     <div class="faq-answer"><p>はい。何から始めればよいか分からない段階でもご相談いただけます。</p><p>事業の状況や気になっていることをお聞かせください。お話を伺いながら、Webでできることや取り組む順番を一緒に考えます。</p></div>
+    </details>
+    <details class="faq-item" name="faq-answers">
+     <summary><span class="faq-q" aria-hidden="true">Q</span><span>制作費は月額顧問料に含まれますか？</span></summary>
+     <div class="faq-answer"><p>はい。ご契約時に決めた範囲の制作・修正は月額顧問料に含まれます。制作するものと作業範囲は、ご契約前に相談して決めます。</p><p>広告費や有料ツール代などの実費は別途かかります。</p></div>
+    </details>
+    <details class="faq-item" name="faq-answers">
+     <summary><span class="faq-q" aria-hidden="true">Q</span><span>何か月から契約できますか？</span></summary>
+     <div class="faq-answer"><p>初回は3か月から承っています。実行した内容を振り返り、改善につなげる時間を確保するためです。</p><p>契約後も事業の状況に合わせて、支援内容を一緒に見直します。</p></div>
+    </details>
+   </div>
+   <p class="faq-scroll-footer">ほかに気になることがあれば <a href="#contact" data-go="7">お問い合わせください →</a></p>
+  </div>
+ </div></div>
+</section>
+
 <section class="scene s5" id="contact" data-name="お問い合わせ・会社概要" aria-labelledby="t5">
   <div class="side" data-nopage="1">
     <form class="cf" novalidate data-nopage="1" data-delivery="mailto" data-endpoint="/api/contact" aria-labelledby="t5">
@@ -1142,6 +1259,7 @@ a:hover{color:inherit}
       }, mq.matches ? 240 : 860);
     }
     function extent(box) {
+      if (box && box.classList.contains("faq-board")) return true;
       var kids = [].filter.call(box.children, function (c) { var cs = win.getComputedStyle(c); return cs.position !== 'absolute' && cs.display !== 'none'; });
       if (!kids.length) return true;
       var cs = win.getComputedStyle(box), a = kids[0], z = kids[kids.length - 1];
@@ -1179,6 +1297,22 @@ a:hover{color:inherit}
       e.preventDefault();
       if (t.hasAttribute('data-go')) go(+t.getAttribute('data-go'), { focus: inScene || t.hasAttribute('data-focus'), queue: true });
       else go(cur + (+t.getAttribute('data-step')), { focus: inScene });
+    });
+    // Keep a newly opened answer visible when the previous answer collapses.
+    var faqRegion = root.querySelector('.faq-scroll');
+    if (faqRegion) faqRegion.addEventListener('click', function (e) {
+      var summary = e.target.closest ? e.target.closest('.faq-item > summary') : null;
+      if (!summary || !faqRegion.contains(summary)) return;
+      win.requestAnimationFrame(function () {
+        if (!summary.parentElement.open) return;
+        if (mode === 'flow') {
+          var header = root.querySelector('.hd');
+          var inset = (header ? header.offsetHeight : 0) + 16;
+          win.scrollTo(0, Math.max(0, summary.getBoundingClientRect().top + win.scrollY - inset));
+        } else {
+          faqRegion.scrollTop += summary.getBoundingClientRect().top - faqRegion.getBoundingClientRect().top;
+        }
+      });
     });
     root.addEventListener('wheel', function (e) {
       if (e.ctrlKey) return;
